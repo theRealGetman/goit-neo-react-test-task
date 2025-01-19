@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.filter {
+  width: 360px;
+}
+
+.catalogList {
+  flex-grow: 1;
+  overflow-y: auto;
+  gap: 40px;
+}

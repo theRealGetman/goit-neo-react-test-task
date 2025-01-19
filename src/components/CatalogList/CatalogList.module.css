@@ -1,0 +1,19 @@
+.catalogList {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 32px;
+  overflow-y: auto;
+  margin-bottom: 40px;
+}
+
+.empty {
+  text-align: center;
+  font-size: 24px;
+  color: #101828;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}

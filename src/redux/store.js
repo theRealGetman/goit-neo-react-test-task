@@ -1,22 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { filterReducer } from "./filters/slice";
-import { contactsReducer } from "./contacts/slice";
-import { authReducer } from "./auth/slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { filterReducer } from "./filters/slice";
+import { favoritesReducer } from "./favorites/slice";
+import { catalogReducer } from "./catalog/slice";
+import { detailsReducer } from "./details/slice";
 
-// Persisting token field from auth slice to localstorage
-const authPersistConfig = {
-  key: "auth",
+const favoritesPersistConfig = {
+  key: "favorites",
   storage,
-  whitelist: ["token"],
+  whitelist: ["items"],
 };
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer,
+    favorites: persistReducer(favoritesPersistConfig, favoritesReducer),
     filter: filterReducer,
+    catalog: catalogReducer,
+    details: detailsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
