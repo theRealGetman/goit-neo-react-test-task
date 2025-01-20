@@ -1,15 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCamperDetails } from "./operations";
 
-const handlePending = (state) => {
-  state.loading = true;
-};
-
-const handleRejected = (state, action) => {
-  state.loading = false;
-  state.error = action.payload;
-};
-
 const detailsSlice = createSlice({
   name: "details",
   initialState: {
@@ -19,13 +10,21 @@ const detailsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCamperDetails.pending, handlePending)
+      .addCase(fetchCamperDetails.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.item = null;
+      })
       .addCase(fetchCamperDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
         state.item = action.payload;
       })
-      .addCase(fetchCamperDetails.rejected, handleRejected);
+      .addCase(fetchCamperDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.item = null;
+      });
   },
 });
 

@@ -1,0 +1,37 @@
+.container {
+  padding: 44px 52px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+}
+
+.features {
+  margin-bottom: 100px;
+}
+
+.vehicleDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #101828;
+}
+
+.divider {
+  height: 1px;
+  background-color: #dadde1;
+  margin: 24px 0;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #101828;
+}

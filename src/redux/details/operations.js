@@ -14,3 +14,16 @@ export const fetchCamperDetails = createAsyncThunk(
     }
   },
 );
+
+export const addBooking = createAsyncThunk(
+  "details/addBooking",
+  async (values, thunkAPI) => {
+    try {
+      // mock api request, wait for 1 second
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      return true;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);

@@ -1,0 +1,20 @@
+.header {
+  margin-bottom: 60px;
+}
+
+.tabBar {
+  margin-bottom: 44px;
+}
+
+.additionalSection {
+  display: flex;
+  gap: 40px;
+}
+
+.outlet {
+  flex: 1;
+}
+
+.contactForm {
+  flex: 1;
+}

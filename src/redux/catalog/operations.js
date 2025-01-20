@@ -7,7 +7,6 @@ const limit = 10;
 let hasNextPage = false;
 
 const filterToRequestParams = (filter) => {
-  console.log(filter);
   if (!filter) {
     return {};
   }
@@ -50,7 +49,6 @@ export const fetchMoreCampers = createAsyncThunk(
   "contacts/fetchMore",
   async (filter, thunkAPI) => {
     try {
-      console.log(filter);
       if (!hasNextPage) {
         return [];
       }

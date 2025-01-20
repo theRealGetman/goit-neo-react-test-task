@@ -1,15 +1,22 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import SvgIcon from "../SvgIcon/SvgIcon";
 import css from "./CatalogItem.module.css";
 import Features from "../Features/Features";
 import { useDispatch } from "react-redux";
 import { toggleFavorite } from "../../redux/favorites/slice";
+import toast from "react-hot-toast";
 
 function CatalogItem({ camper }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleFavorite = () => {
     dispatch(toggleFavorite(camper));
+    if (camper.favored) {
+      toast.success("Removed from favorites");
+    } else {
+      toast.success("Added to favorites");
+    }
   };
 
   return (
@@ -23,7 +30,7 @@ function CatalogItem({ camper }) {
         <div className={css.header}>
           <h2 className={css.title}>{camper.name}</h2>
           <div className={css.priceWrapper}>
-            <p className={css.price}>€{camper.price}</p>
+            <p className={css.price}>€{camper.price.toFixed(2)}</p>
             <SvgIcon
               cssClass={css.heart}
               src={camper.favored ? "heart-filled.svg" : "heart.svg"}
@@ -46,8 +53,10 @@ function CatalogItem({ camper }) {
         <p className={css.description}>{camper.description}</p>
         <Features camper={camper} />
         <div>
-          <PrimaryButton>
-            <NavLink to={`/catalog/${camper.id}`}>Show more</NavLink>
+          <PrimaryButton
+            onClick={() => navigate(`/catalog/${camper.id}/features`)}
+          >
+            Show more
           </PrimaryButton>
         </div>
       </div>
